@@ -5026,7 +5026,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3311096834021849458}
   - component: {fileID: 3443718476413053286}
-  - component: {fileID: 3123985575099827977}
+  - component: {fileID: 1570364680348685683}
   m_Layer: 0
   m_Name: Crash Collider
   m_TagString: Untagged
@@ -5065,7 +5065,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.66
---- !u!114 &3123985575099827977
+--- !u!114 &1570364680348685683
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5074,11 +5074,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2378964456011525001}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c70feac148ef63c46a9ee6ad0779e5c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 0df66c33cea8a654183067ee613b6edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Explosion: {fileID: 8884708297465239919, guid: b2bddde45301abc49a0f37de8c4dbfa9, type: 3}
-  shipGameObject: {fileID: 5673837071662236956}
+  Ship: {fileID: 5673837071662236956}
+  State: 2
+  RevertState: 1
 --- !u!1 &2773718785060302160
 GameObject:
   m_ObjectHideFlags: 0
@@ -24664,7 +24665,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b5a9bcc34ad85384b81e7c8d34497103, type: 3}
   - {fileID: 21300000, guid: 5f7b295f2341215489be38529d0ad2f8, type: 3}
   DeathExplosionPrefab: {fileID: 5486776660213297878, guid: 778eec75e217ff54ba143a6f72eaf2b1, type: 3}
+  maxHealth: 4
   Player: {fileID: 0}
+  Explosion: {fileID: 8884708297465239919, guid: b2bddde45301abc49a0f37de8c4dbfa9, type: 3}
 --- !u!114 &2184094813103909490
 MonoBehaviour:
   m_ObjectHideFlags: 0

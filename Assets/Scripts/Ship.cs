@@ -56,7 +56,7 @@ public abstract class Ship : MonoBehaviour {
         }
     }
     
-    public void DestroyShip() {
+    public virtual void DestroyShip() {
         Instantiate(DeathExplosionPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }

@@ -10,12 +10,12 @@ public class ExplodeOnTrigger : MonoBehaviour {
     private GameObject shipGameObject; 
 
     void OnTriggerEnter2D(Collider2D collider) {
-        Ship ship = (Ship) collider.gameObject.GetComponent<Ship>();
+        // Ship ship = (Ship) collider.gameObject.GetComponent<Ship>();
 
-        if (ship == null) return;
+        // if (ship == null) return;
         
-        Instantiate(Explosion, transform.position, transform.rotation);
-        Ship explodedShip = shipGameObject.GetComponent<Ship>();
-        explodedShip.TakeDamage(explodedShip.maxHealth);
+        // Instantiate(Explosion, transform.position, transform.rotation);
+        // Ship explodedShip = shipGameObject.GetComponent<Ship>();
+        // explodedShip.TakeDamage(explodedShip.maxHealth);
     }
 }

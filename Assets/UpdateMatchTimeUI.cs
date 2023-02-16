@@ -23,7 +23,6 @@ public class UpdateMatchTimeUI : MonoBehaviour {
     }
 
     void UpdateUIText() {
-            
         TimeRemainingText.text = string.Format("{0:0.00}", matchTime);
     }
 }

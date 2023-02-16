@@ -12,12 +12,15 @@ public class MatchManager : MonoBehaviour {
     [SerializeField]
     private List<GameObject> Enemies;
     [SerializeField]
-    private GameObject DestruidoMenu;
+    private GameObject GameEndMenu;
     [SerializeField]
-    private TMP_Text DestruidoTituloText;
+    private TMP_Text GameEndTituloText;
+    [SerializeField]
+    private TMP_Text GameEndPontuacaoText;
 
     private float tilemapSize = 30f;
     private int spawnTries = 3;
+    private int enemiesDestroyed = 0;
 
     private float MatchTime;
     private float EnemySpawnTimer;
@@ -56,7 +59,9 @@ public class MatchManager : MonoBehaviour {
 
             GameObject enemy = Instantiate(Enemies[Random.Range(0, Enemies.Count)]);
             enemy.transform.position = randomPosition;
-            enemy.transform.GetChild(0).GetComponent<Enemy>().Player = Player;
+            Enemy enemyComponent = enemy.transform.GetChild(0).GetComponent<Enemy>();
+            enemyComponent.Player = Player;
+            enemyComponent.EnemyDestroyedEvent += OnEnemyDestroyedEvent;
         } 
     }
 
@@ -85,13 +90,19 @@ public class MatchManager : MonoBehaviour {
     }
 
     void EndMatch(bool playerWon) {
+        if (matchEnded) return;
         matchEnded = true;
-        Time.timeScale = 0;
         if (playerWon) {
-            DestruidoTituloText.text = "Você venceu!";
+            GameEndTituloText.text = "Você sobreviveu!";
+            Time.timeScale = 0;
         } else {
-            DestruidoTituloText.text = "Você foi destruído!";
+            GameEndTituloText.text = "Você foi destruído!";
         }
-        DestruidoMenu.SetActive(true);
+        GameEndPontuacaoText.text = "Pontuação: " + enemiesDestroyed;
+        GameEndMenu.SetActive(true);
+    }
+
+    void OnEnemyDestroyedEvent() {
+        enemiesDestroyed++;
     }
 }
