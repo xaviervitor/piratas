@@ -10,10 +10,8 @@ public class EnemyStateMachine : MonoBehaviour {
     }
     
     public EnemyState state = EnemyState.Idle;
-    public EnemyState previousState = EnemyState.Idle;
     
     public void ChangeState(EnemyState newState) {
-        previousState = state;
         state = newState;
     }
 }

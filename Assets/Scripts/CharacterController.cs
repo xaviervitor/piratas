@@ -11,7 +11,6 @@ public class CharacterController : Ship {
 
     protected new void Start() {
         base.Start();
-        health = 4;
     }
 
     public void OnForward(InputAction.CallbackContext context) {
