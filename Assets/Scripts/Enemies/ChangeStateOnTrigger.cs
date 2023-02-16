@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class ChangeStateOnTrigger : MonoBehaviour {
 
-    public GameObject Ship;
-    public EnemyStateMachine.EnemyState State = EnemyStateMachine.EnemyState.Idle;
-    public EnemyStateMachine.EnemyState RevertState = EnemyStateMachine.EnemyState.Idle;
+    [SerializeField]
+    private GameObject Ship;
+    [SerializeField]
+    private EnemyStateMachine.EnemyState State = EnemyStateMachine.EnemyState.Idle;
+    [SerializeField]
+    private EnemyStateMachine.EnemyState RevertState = EnemyStateMachine.EnemyState.Idle;
 
     private EnemyStateMachine stateMachine;
     

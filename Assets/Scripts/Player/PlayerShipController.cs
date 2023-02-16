@@ -5,9 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerShipController : Ship {
 
-    public GameObject CannonballPrefab;
-    public GameObject CannonballFrontalSpawn;
-    public List<GameObject> CannonballLateralSpawners;
+    [SerializeField]
+    private GameObject CannonballPrefab;
+    [SerializeField]
+    private GameObject CannonballFrontalSpawn;
+    [SerializeField]
+    private List<GameObject> CannonballLateralSpawners;
 
     protected new void Start() {
         base.Start();

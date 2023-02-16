@@ -17,6 +17,8 @@ public class MatchManager : MonoBehaviour {
     private TMP_Text GameEndTituloText;
     [SerializeField]
     private TMP_Text GameEndPontuacaoText;
+    [SerializeField]
+    private GameObject MatchTimerUI;
 
     private float tilemapSize = 30f;
     private int spawnTries = 3;
@@ -24,8 +26,8 @@ public class MatchManager : MonoBehaviour {
 
     private float MatchTime;
     private float EnemySpawnTimer;
-    private float defaultMatchTime = 5f;
-    private float defaultEnemySpawnTimer = 1f;
+    private float defaultMatchTime = 2 * 60f;
+    private float defaultEnemySpawnTimer = 4f;
 
     private bool matchEnded = false;
 
@@ -35,9 +37,17 @@ public class MatchManager : MonoBehaviour {
 
     void Start() {
         Time.timeScale = 1;
-        MatchTime = PlayerPrefs.GetFloat("TempoDuracao", defaultMatchTime);
-        EnemySpawnTimer = PlayerPrefs.GetFloat("TempoSpawn", defaultEnemySpawnTimer);
+        if (!PlayerPrefs.HasKey(PlayerSettings.TempoDuracao)) {
+            PlayerPrefs.SetFloat(PlayerSettings.TempoDuracao, defaultMatchTime);
+        }
 
+        if (!PlayerPrefs.HasKey(PlayerSettings.TempoSpawn)) {
+            PlayerPrefs.SetFloat(PlayerSettings.TempoSpawn, defaultEnemySpawnTimer);
+        }
+
+        MatchTime = PlayerPrefs.GetFloat(PlayerSettings.TempoDuracao, defaultMatchTime);
+        EnemySpawnTimer = PlayerPrefs.GetFloat(PlayerSettings.TempoSpawn, defaultEnemySpawnTimer);
+        
         StartCoroutine(SpawnEnemies(EnemySpawnTimer));
         StartCoroutine(EndMatchAfterTime(MatchTime));
     }
@@ -99,6 +109,8 @@ public class MatchManager : MonoBehaviour {
             GameEndTituloText.text = "Você foi destruído!";
         }
         GameEndPontuacaoText.text = "Pontuação: " + enemiesDestroyed;
+
+        MatchTimerUI.GetComponent<UpdateMatchTimeUI>().StopTimer();
         GameEndMenu.SetActive(true);
     }
 

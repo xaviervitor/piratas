@@ -15,8 +15,8 @@ public class MainMenuController : MonoBehaviour {
     private TMP_InputField TempoSpawnInputField;
     
     void Start() {
-        float duracao = PlayerPrefs.GetFloat("TempoDuracao", 0f);
-        float tempoSpawn = PlayerPrefs.GetFloat("TempoSpawn", 0f);
+        float duracao = PlayerPrefs.GetFloat(PlayerSettings.TempoDuracao, 0f);
+        float tempoSpawn = PlayerPrefs.GetFloat(PlayerSettings.TempoSpawn, 0f);
         if (duracao == 0) {
             DuracaoInputField.text = "";
         }
@@ -38,10 +38,10 @@ public class MainMenuController : MonoBehaviour {
         ConfiguracoesMenu.SetActive(false);
         Menu.SetActive(true);
         if (DuracaoInputField.text != "") {
-            PlayerPrefs.SetFloat("TempoDuracao", float.Parse(DuracaoInputField.text));
+            PlayerPrefs.SetFloat(PlayerSettings.TempoDuracao, float.Parse(DuracaoInputField.text));
         }
         if (TempoSpawnInputField.text != "") {
-            PlayerPrefs.SetFloat("TempoSpawn", float.Parse(TempoSpawnInputField.text));
+            PlayerPrefs.SetFloat(PlayerSettings.TempoSpawn, float.Parse(TempoSpawnInputField.text));
         }
     }
 }
