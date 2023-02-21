@@ -103,12 +103,12 @@ public class MatchManager : MonoBehaviour {
         if (matchEnded) return;
         matchEnded = true;
         if (playerWon) {
-            GameEndTituloText.text = "Você sobreviveu!";
+            GameEndTituloText.text = "Voce sobreviveu!";
             Time.timeScale = 0;
         } else {
-            GameEndTituloText.text = "Você foi destruído!";
+            GameEndTituloText.text = "Voce foi destruido!";
         }
-        GameEndPontuacaoText.text = "Pontuação: " + enemiesDestroyed;
+        GameEndPontuacaoText.text = "Pontuacao: " + enemiesDestroyed;
 
         MatchTimerUI.GetComponent<UpdateMatchTimeUI>().StopTimer();
         GameEndMenu.SetActive(true);
