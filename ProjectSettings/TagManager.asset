@@ -14,9 +14,9 @@ TagManager:
   - Water
   - UI
   - OutOfBounds
-  - 
-  - 
-  - 
+  - Distortion
+  - Sea
+  - Ghost
   - 
   - 
   - 
@@ -42,6 +42,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Water
+    uniqueID: 969124991
+    locked: 0
+  - name: Distortion
+    uniqueID: 1169578557
     locked: 0
   - name: Map
     uniqueID: 3433508207

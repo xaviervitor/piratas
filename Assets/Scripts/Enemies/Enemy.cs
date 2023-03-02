@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Enemy : Ship {
-    [SerializeField]
-    public GameObject Player;
+    [SerializeField] public GameObject Player;
 
     public delegate void EnemyDestroyedDelegate();
     public event EnemyDestroyedDelegate EnemyDestroyedEvent;
@@ -13,7 +12,7 @@ public abstract class Enemy : Ship {
 
     protected new void Start() {
         base.Start();
-        stateMachine = GetComponent<EnemyStateMachine>();
+        stateMachine = GetComponent<EnemyStateMachine>();        
         // Event initialization only on Start() because the Player variable 
         // isn't initialized at OnEnable() and is null at OnDisable(). 
         Player.GetComponent<Ship>().ShipDestroyedEvent += OnPlayerDestroyedEvent;
@@ -29,7 +28,7 @@ public abstract class Enemy : Ship {
         }
     }
 
-    void OnPlayerDestroyedEvent() {
+    public void OnPlayerDestroyedEvent() {
         stateMachine.ChangeState(EnemyStateMachine.EnemyState.Idle);
     }
     

@@ -2,27 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour {
-    [SerializeField]
-    private GameObject ConfiguracoesMenu;
-    [SerializeField]
-    private GameObject Menu;
-    [SerializeField]
-    private TMP_InputField DuracaoInputField;
-    [SerializeField]
-    private TMP_InputField TempoSpawnInputField;
-    
+    [SerializeField] private GameObject Menu;
+    [SerializeField] private GameObject SettingsMenu;
+    [SerializeField] private TMP_Dropdown GameModeDropdown;
+    [SerializeField] private TMP_InputField MatchTimeInputField;
+    [SerializeField] private TMP_InputField EnemySpawnInputField;
+
     void Start() {
-        float duracao = PlayerPrefs.GetFloat(PlayerSettings.TempoDuracao, 0f);
-        float tempoSpawn = PlayerPrefs.GetFloat(PlayerSettings.TempoSpawn, 0f);
-        if (duracao == 0) {
-            DuracaoInputField.text = "";
-        }
-        if (tempoSpawn == 0) {
-            TempoSpawnInputField.text = "";
-        }
+        PlayerPrefs.SetInt(PlayerSettings.GameMode, PlayerSettings.defaultGameMode);
     }
 
     public void OnJogarButtonClick() {
@@ -31,17 +22,22 @@ public class MainMenuController : MonoBehaviour {
 
     public void OnConfiguracoesButtonClick() {
         Menu.SetActive(false);
-        ConfiguracoesMenu.SetActive(true);
+        SettingsMenu.SetActive(true);
     }
 
     public void OnConfiguracoesConfirmarButtonClick() {
-        ConfiguracoesMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
         Menu.SetActive(true);
-        if (DuracaoInputField.text != "") {
-            PlayerPrefs.SetFloat(PlayerSettings.TempoDuracao, float.Parse(DuracaoInputField.text));
+        if (MatchTimeInputField.text != "") {
+            PlayerPrefs.SetFloat(PlayerSettings.MatchTime, float.Parse(MatchTimeInputField.text));
         }
-        if (TempoSpawnInputField.text != "") {
-            PlayerPrefs.SetFloat(PlayerSettings.TempoSpawn, float.Parse(TempoSpawnInputField.text));
+        if (EnemySpawnInputField.text != "") {
+            PlayerPrefs.SetFloat(PlayerSettings.EnemySpawnTime, float.Parse(EnemySpawnInputField.text));
         }
+    }
+
+    public void OnGameModeDropdownValueChanged(TMP_Dropdown change) {
+        PlayerPrefs.SetInt(PlayerSettings.GameMode, change.value);
+        MatchTimeInputField.interactable = (change.value != (int) MatchManager.GameMode.Infinite);
     }
 }

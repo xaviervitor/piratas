@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UpdateHealthWheel : MonoBehaviour {
-    [SerializeField]
-    private GameObject Ship;
-    [SerializeField]
-    private GameObject Slider;
+    [SerializeField] private GameObject Ship;
+    [SerializeField] private GameObject Slider;
     
     private Slider slider;
 

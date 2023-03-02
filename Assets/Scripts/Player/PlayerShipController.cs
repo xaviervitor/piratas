@@ -5,15 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerShipController : Ship {
 
-    [SerializeField]
-    private GameObject CannonballPrefab;
-    [SerializeField]
-    private GameObject CannonballFrontalSpawn;
-    [SerializeField]
-    private List<GameObject> CannonballLateralSpawners;
+    [SerializeField] private GameObject CannonballPrefab;
+    [SerializeField] private GameObject CannonballFrontalSpawn;
+    [SerializeField] private List<GameObject> CannonballLateralSpawners;
+
+    private int objInstanceID;
 
     protected new void Start() {
         base.Start();
+        objInstanceID = gameObject.GetInstanceID();
     }
 
     public void OnForward(InputAction.CallbackContext context) {
@@ -26,13 +26,17 @@ public class PlayerShipController : Ship {
 
     public void OnFireFrontal(InputAction.CallbackContext context) {
         if (context.action.ReadValue<float>() != 1 || !context.performed) return;
-        Instantiate(CannonballPrefab, CannonballFrontalSpawn.transform);
+        GameObject instantiatedCannonball = Instantiate(CannonballPrefab, CannonballFrontalSpawn.transform.position, CannonballFrontalSpawn.transform.rotation);
+        Cannonball cannonball = (Cannonball) instantiatedCannonball.transform.GetChild(0).GetComponent<Cannonball>();
+        cannonball.ownerInstanceID = objInstanceID;
     }
 
     public void OnFireLateral(InputAction.CallbackContext context) {
         if (context.action.ReadValue<float>() != 1 || !context.performed) return;
         foreach (GameObject cannonballSpawner in CannonballLateralSpawners) {
-            Instantiate(CannonballPrefab, cannonballSpawner.transform);
+            GameObject instantiatedCannonball = Instantiate(CannonballPrefab, cannonballSpawner.transform.position, cannonballSpawner.transform.rotation);
+            Cannonball cannonball = (Cannonball) instantiatedCannonball.transform.GetChild(0).GetComponent<Cannonball>();
+            cannonball.ownerInstanceID = objInstanceID;
         }
     }
 }

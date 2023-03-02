@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Ship : MonoBehaviour {
-    [SerializeField]
-    protected float Speed = 4;
-    [SerializeField]
-    protected float Torque = 90;
-    [SerializeField]
-    private GameObject Fire;
-    [SerializeField]
-    private GameObject Smoke;
-    [SerializeField]
-    private List<Sprite> Sprites;
-    [SerializeField]
-    private GameObject DeathExplosionPrefab;
+    [SerializeField] protected float Speed = 4;
+    [SerializeField] protected float Torque = 90;
+    [SerializeField] private GameObject Fire;
+    [SerializeField] private GameObject Smoke;
+    [SerializeField] private List<Sprite> Sprites;
+    [SerializeField] private GameObject DeathExplosionPrefab;
+    [SerializeField] protected float maxHealth = 4f;
+    protected float health = 4f;
 
     public delegate void HealthChangedDelegate(float health, float maxHealth);
     public event HealthChangedDelegate HealthChangedEvent;
@@ -24,9 +20,6 @@ public abstract class Ship : MonoBehaviour {
 
     protected new Rigidbody2D rigidbody;
     protected SpriteRenderer spriteRenderer;
-
-    protected float health = 4f;
-    public float maxHealth = 4f;
 
     protected float currentSpeed = 0;
     protected float currentTorque = 0;
@@ -42,6 +35,7 @@ public abstract class Ship : MonoBehaviour {
     protected void Start() {
         rigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        health = maxHealth;
     }
 
     protected void FixedUpdate() {
@@ -51,7 +45,7 @@ public abstract class Ship : MonoBehaviour {
 
     private void UpdateSprite(float health) {
         spriteRenderer.sprite = Sprites[Mathf.CeilToInt(health - 1)];
-        if (health == 1) {
+        if (health > 0 && health < 1) {
             Smoke.SetActive(true);
         }
     }
@@ -61,12 +55,15 @@ public abstract class Ship : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    public void TakeDamage(float damage) {
-        health -= damage;
+    public void ChangeHealth(float amount) {
+        health += amount;
         if (health <= 0) {
+            health = 0;
             if (ShipDestroyedEvent != null) {
                 ShipDestroyedEvent();
             }
+        } else if (health > maxHealth) {
+            health = maxHealth;
         } else {
             UpdateSprite(health);
         }

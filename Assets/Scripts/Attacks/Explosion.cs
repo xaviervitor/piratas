@@ -11,7 +11,7 @@ public class Explosion : MonoBehaviour {
         Ship ship = (Ship) collider.gameObject.GetComponent<Ship>();
 
         if (ship != null) {
-            ship.TakeDamage(1f); 
+            ship.ChangeHealth(-1f); 
         }
     }
 }

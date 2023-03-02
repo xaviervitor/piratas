@@ -5,20 +5,19 @@ using UnityEngine.Tilemaps;
 using TMPro;
 
 public class MatchManager : MonoBehaviour {
-    [SerializeField]
-    private LayerMask OutOfBoundsLayer;
-    [SerializeField]
-    private GameObject Player;
-    [SerializeField]
-    private List<GameObject> Enemies;
-    [SerializeField]
-    private GameObject GameEndMenu;
-    [SerializeField]
-    private TMP_Text GameEndTituloText;
-    [SerializeField]
-    private TMP_Text GameEndPontuacaoText;
-    [SerializeField]
-    private GameObject MatchTimerUI;
+    public enum GameMode { Infinite, TimeLimit } 
+    
+    public delegate void EnemySpawnedDelegate(Enemy enemy, Vector2 initialPosition);
+    public static event EnemySpawnedDelegate EnemySpawnedEvent;
+
+    public delegate void GameEndedDelegate(int currentGameMode, bool playerWon, int enemiesDestroyed);
+    public static event GameEndedDelegate GameEndedEvent;
+
+    [SerializeField] private LayerMask OutOfBoundsLayer;
+    [SerializeField] private GameObject Player;
+    [SerializeField] private List<GameObject> Enemies;
+    [SerializeField] private GameObject GhostEnemy;
+    [SerializeField] private Vector2 GhostEnemySpawnPosition = new Vector2(8f, 0f);
 
     private float tilemapSize = 30f;
     private int spawnTries = 3;
@@ -26,53 +25,74 @@ public class MatchManager : MonoBehaviour {
 
     private float MatchTime;
     private float EnemySpawnTimer;
-    private float defaultMatchTime = 2 * 60f;
-    private float defaultEnemySpawnTimer = 4f;
+    private int CurrentGameMode;
 
     private bool matchEnded = false;
+
+    private GameObject enemiesContainer;
 
     void OnEnable() {
         Player.GetComponent<Ship>().ShipDestroyedEvent += OnPlayerDestroyedEvent;
     }
 
     void Start() {
+        Cursor.visible = false;
         Time.timeScale = 1;
-        if (!PlayerPrefs.HasKey(PlayerSettings.TempoDuracao)) {
-            PlayerPrefs.SetFloat(PlayerSettings.TempoDuracao, defaultMatchTime);
+
+        if (!PlayerPrefs.HasKey(PlayerSettings.MatchTime)) {
+            PlayerPrefs.SetFloat(PlayerSettings.MatchTime, PlayerSettings.defaultMatchTime);
         }
 
-        if (!PlayerPrefs.HasKey(PlayerSettings.TempoSpawn)) {
-            PlayerPrefs.SetFloat(PlayerSettings.TempoSpawn, defaultEnemySpawnTimer);
+        if (!PlayerPrefs.HasKey(PlayerSettings.EnemySpawnTime)) {
+            PlayerPrefs.SetFloat(PlayerSettings.EnemySpawnTime, PlayerSettings.defaultEnemySpawnTime);
         }
 
-        MatchTime = PlayerPrefs.GetFloat(PlayerSettings.TempoDuracao, defaultMatchTime);
-        EnemySpawnTimer = PlayerPrefs.GetFloat(PlayerSettings.TempoSpawn, defaultEnemySpawnTimer);
+        if (!PlayerPrefs.HasKey(PlayerSettings.GameMode)) {
+            PlayerPrefs.SetInt(PlayerSettings.GameMode, PlayerSettings.defaultGameMode);
+        }
+
+        CurrentGameMode = PlayerPrefs.GetInt(PlayerSettings.GameMode);
+        MatchTime = PlayerPrefs.GetFloat(PlayerSettings.MatchTime);
+        EnemySpawnTimer = PlayerPrefs.GetFloat(PlayerSettings.EnemySpawnTime);
         
         StartCoroutine(SpawnEnemies(EnemySpawnTimer));
-        StartCoroutine(EndMatchAfterTime(MatchTime));
+
+        if (CurrentGameMode == (int) GameMode.TimeLimit) {
+            StartCoroutine(EndMatchAfterTime(MatchTime));
+        }
     }
 
     IEnumerator SpawnEnemies(float spawnTimer) {
+        enemiesContainer = new GameObject("Enemies");
         while (true) {
             yield return new WaitForSeconds(spawnTimer);
             if (Player == null || matchEnded) break;
-            Vector2 randomPosition = GetRandomPosition(-tilemapSize, tilemapSize, -tilemapSize, tilemapSize);
+            
+            Vector2 initialPosition = GetRandomPosition(-tilemapSize, tilemapSize, -tilemapSize, tilemapSize);
             bool validSpawn = false;
             for (int i = 0 ; i < spawnTries ; i++) {
-                if (isValidSpawnPosition(randomPosition, Player.transform.position)) {
+                if (isValidSpawnPosition(initialPosition, Player.transform.position)) {
                     validSpawn = true;
                     break;
                 }
-                randomPosition = GetRandomPosition(-tilemapSize, tilemapSize, -tilemapSize, tilemapSize);
+                initialPosition = GetRandomPosition(-tilemapSize, tilemapSize, -tilemapSize, tilemapSize);
             }
             if (!validSpawn) continue;
 
-            GameObject enemy = Instantiate(Enemies[Random.Range(0, Enemies.Count)]);
-            enemy.transform.position = randomPosition;
-            Enemy enemyComponent = enemy.transform.GetChild(0).GetComponent<Enemy>();
-            enemyComponent.Player = Player;
-            enemyComponent.EnemyDestroyedEvent += OnEnemyDestroyedEvent;
+            SpawnEnemy(Enemies[Random.Range(0, Enemies.Count)], initialPosition);
         } 
+    }
+
+    void SpawnEnemy(GameObject EnemyPrefab, Vector2 initialPosition) {
+        GameObject instantiatedEnemy = Instantiate(EnemyPrefab, enemiesContainer.transform);
+        instantiatedEnemy.transform.position = initialPosition;
+        Enemy enemy = instantiatedEnemy.transform.GetChild(0).GetComponent<Enemy>();
+        enemy.Player = Player;
+        enemy.EnemyDestroyedEvent += OnEnemyDestroyedEvent;
+        
+        if (EnemySpawnedEvent != null) {
+            EnemySpawnedEvent(enemy, initialPosition);
+        }
     }
 
     IEnumerator EndMatchAfterTime(float matchTime) {
@@ -102,19 +122,22 @@ public class MatchManager : MonoBehaviour {
     void EndMatch(bool playerWon) {
         if (matchEnded) return;
         matchEnded = true;
-        if (playerWon) {
-            GameEndTituloText.text = "Voce sobreviveu!";
-            Time.timeScale = 0;
-        } else {
-            GameEndTituloText.text = "Voce foi destruido!";
-        }
-        GameEndPontuacaoText.text = "Pontuacao: " + enemiesDestroyed;
+        Cursor.visible = true;
 
-        MatchTimerUI.GetComponent<UpdateMatchTimeUI>().StopTimer();
-        GameEndMenu.SetActive(true);
+        if (CurrentGameMode == (int) GameMode.TimeLimit && playerWon) {
+            Time.timeScale = 0;
+            
+        }
+
+        if (GameEndedEvent != null) {
+            GameEndedEvent(CurrentGameMode, playerWon, enemiesDestroyed);
+        }
     }
 
     void OnEnemyDestroyedEvent() {
         enemiesDestroyed++;
+        if (enemiesDestroyed % 10 == 0) {
+            SpawnEnemy(GhostEnemy, GhostEnemySpawnPosition);
+        }
     }
 }
