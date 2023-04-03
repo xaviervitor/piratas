@@ -51,9 +51,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Distortion_Scale: 70
+    - _Distortion_Scale: 120
     - _Distortion_Strength: 7.5
     m_Colors:
     - _Distortion_Speed: {r: 0.01, g: 0.01, b: 0, a: 0}
-    - _Distortion_Strength: {r: 0.01, g: 0.01, b: 0, a: 0}
+    - _Distortion_Strength: {r: -0.01, g: -0.01, b: 0, a: 0}
   m_BuildTextureStacks: []

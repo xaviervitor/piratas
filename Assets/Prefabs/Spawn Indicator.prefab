@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5976023349386477466}
   - component: {fileID: 1488775479082133933}
   - component: {fileID: 1616967791466529309}
+  - component: {fileID: 4474278311621123182}
   m_Layer: 0
   m_Name: Spawn Indicator
   m_TagString: Untagged
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 625065703
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b0685377b1509cf409ef327fa5fccadd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7529412}
@@ -105,3 +106,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4474278311621123182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8854206462246249195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a10fc872565b9c4c9f9d0d12c6ef378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 0}
+  SpawnIndicatorSpawner: {fileID: 0}
+  indicatorPadding: 0.5
+  indicatorOffset: {x: 0, y: 1.75}

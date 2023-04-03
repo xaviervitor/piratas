@@ -298,7 +298,7 @@ SpriteRenderer:
   m_SortingLayerID: -1436447591
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 2428aadafd8dce546803c513f82f009b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e5c9d9303b1ae149a46fd455d4145f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -336,13 +336,13 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
+  m_UseAutoMass: 1
   m_Mass: 0.6523195
   m_LinearDrag: 0.25
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -359,14 +359,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3.5
-  Torque: 90
-  Fire: {fileID: 313012102003281398}
+  AngularVelocity: 90
+  ActiveShipSkin: {fileID: 11400000, guid: 44281cc3bfc28e7499171de725ccb13c, type: 2}
   Smoke: {fileID: 2995544345593355698}
-  Sprites:
-  - {fileID: 21300000, guid: 9ad8e7e81ab4859448e7a75b2b051541, type: 3}
-  - {fileID: 21300000, guid: 9ad8e7e81ab4859448e7a75b2b051541, type: 3}
-  - {fileID: 21300000, guid: efa0247f2247aaf42b185edf4a83f0ca, type: 3}
-  - {fileID: 21300000, guid: 2428aadafd8dce546803c513f82f009b, type: 3}
   DeathExplosionPrefab: {fileID: 5486776660213297878, guid: 778eec75e217ff54ba143a6f72eaf2b1, type: 3}
   maxHealth: 2
   Player: {fileID: 0}
@@ -375,6 +370,7 @@ MonoBehaviour:
   - {fileID: 8101409029642848392}
   - {fileID: 2196232307959552474}
   - {fileID: 7129958336940003929}
+  ShotPrefab: {fileID: 4435296639507790753, guid: 678e41c73c9425a4a9bfc44edb601332, type: 3}
   cannonballShotDelay: 1
 --- !u!114 &8134387811802972008
 MonoBehaviour:
@@ -385,7 +381,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2310862235515375622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9da4af2cb9c2d04c8a03ba0c9a67e70, type: 3}
+  m_Script: {fileID: 11500000, guid: c73e21563ef18e8468531c41f5c25ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
@@ -649,11 +645,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 096452de2cc28114e8886f0ce598090a, type: 3}
---- !u!1 &313012102003281398 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 640737839970309055, guid: 096452de2cc28114e8886f0ce598090a, type: 3}
-  m_PrefabInstance: {fileID: 917697976826666569}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2995544345593355698 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2679112657840931835, guid: 096452de2cc28114e8886f0ce598090a, type: 3}
@@ -846,6 +837,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail
       objectReference: {fileID: 0}
+    - target: {fileID: 6876848038355458323, guid: e20508fb6baec1f4b8f9d52dc6c30401, type: 3}
+      propertyPath: Ship
+      value: 
+      objectReference: {fileID: 2310862235515375622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e20508fb6baec1f4b8f9d52dc6c30401, type: 3}
 --- !u!4 &4244464918550023132 stripped

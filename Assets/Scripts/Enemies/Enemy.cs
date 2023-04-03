@@ -6,19 +6,16 @@ public abstract class Enemy : Ship {
     [SerializeField] public GameObject Player;
 
     public delegate void EnemyDestroyedDelegate();
-    public event EnemyDestroyedDelegate EnemyDestroyedEvent;
+    public static event EnemyDestroyedDelegate EnemyDestroyedEvent;
 
     private EnemyStateMachine stateMachine;
 
     protected new void Start() {
         base.Start();
         stateMachine = GetComponent<EnemyStateMachine>();        
-        // Event initialization only on Start() because the Player variable 
-        // isn't initialized at OnEnable() and is null at OnDisable(). 
-        Player.GetComponent<Ship>().ShipDestroyedEvent += OnPlayerDestroyedEvent;
     }
 
-    protected void Update() {
+    protected new void Update() {
         if (stateMachine.state == EnemyStateMachine.EnemyState.Idle) {
             IdleStateUpdate();
         } else if (stateMachine.state == EnemyStateMachine.EnemyState.Chase) {
@@ -27,31 +24,44 @@ public abstract class Enemy : Ship {
             AttackStateUpdate();
         }
     }
-
-    public void OnPlayerDestroyedEvent() {
-        stateMachine.ChangeState(EnemyStateMachine.EnemyState.Idle);
-    }
     
-    protected virtual void IdleStateUpdate() {
-        currentTorque = Torque / 2;
-        currentSpeed = Speed / 2;
+    protected new void FixedUpdate() {
+        rigidbody.angularVelocity = currentAngularVelocity;
+        rigidbody.velocity = currentVelocity;
     }
 
-    protected virtual void ChaseStateUpdate() {
-        Chase(Speed);
+    protected virtual void IdleStateUpdate() {
+    }
+
+    protected virtual void ChaseStateUpdate() {        
     }
 
     protected virtual void AttackStateUpdate() {
-        
     }
 
     protected void Chase(float speed) {
         Vector2 direction = Player.transform.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Torque / 32 * Time.deltaTime);
-        currentTorque = 0;
-        currentSpeed = speed;
+        
+        float angleAdjusmentAmount = transform.rotation.eulerAngles.z - rotation.eulerAngles.z;
+        if (angleAdjusmentAmount >= 180f) {
+            angleAdjusmentAmount -= 360f;
+        }
+        if (angleAdjusmentAmount <= -180f) {
+            angleAdjusmentAmount += 360f;
+        }
+        float turnDirection = (angleAdjusmentAmount > 0f) ? -1 : 1;
+
+        float correctionAngleLimit = 5f;
+        float factor = Mathf.InverseLerp(0f, correctionAngleLimit, Mathf.Abs(angleAdjusmentAmount)); 
+        currentAngularVelocity = AngularVelocity * factor * turnDirection;
+        
+        currentVelocity = -transform.up * speed;
+    }
+
+    public void OnPlayerDestroyedEvent() {
+        stateMachine.ChangeState(EnemyStateMachine.EnemyState.Idle);
     }
 
     public override void DestroyShip() {

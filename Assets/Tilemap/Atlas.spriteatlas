@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: ad9071df2392e8f43959e961f984fe21, type: 3}
+    - {fileID: 102900000, guid: 1e15db8758ac67c468270f112706e90a, type: 3}
+    - {fileID: 2800000, guid: a5689245fdb07f241a7d91b0cd949bad, type: 3}
+    - {fileID: 102900000, guid: 03a9135800c6d414ea3c80ad7eabfd1c, type: 3}
+    - {fileID: 2800000, guid: ab92bf167cdc1da42be5f0ab239b06e7, type: 3}
+    - {fileID: 2800000, guid: ac07147eae62679459838be861e721f0, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 8927a041fcdf75c41909d78b9ad7121e, type: 3}
+  - {fileID: 21300000, guid: 043b7a61eec51444fb166bbabc54cb7b, type: 3}
+  - {fileID: 21300000, guid: 602436b11a1eb674c9eab354d17c0787, type: 3}
+  - {fileID: 21300000, guid: 495713f1abf3b4f47a976d53dd268b20, type: 3}
+  - {fileID: 21300000, guid: 7aba89f2cf6b1d448a9d6deb915b291e, type: 3}
+  - {fileID: 21300000, guid: b102fe03df5ec6948b698dbcb3b6d9f4, type: 3}
+  - {fileID: 21300000, guid: bbec9923bd5005345bf5ee891823c5a6, type: 3}
+  - {fileID: 21300000, guid: 2d0ddf7386d8dde4ca9dd90a1ee2587f, type: 3}
+  - {fileID: 21300000, guid: 4e5c9d9303b1ae149a46fd455d4145f2, type: 3}
+  - {fileID: 21300000, guid: b5a9bcc34ad85384b81e7c8d34497103, type: 3}
+  - {fileID: 21300000, guid: 5b7f5d242250c9642bfc4951a03a1eda, type: 3}
+  - {fileID: 21300000, guid: 0f447a345716b7844ac44407c409db07, type: 3}
+  - {fileID: 21300000, guid: e6537074ea913834ca9ccd24a13bf5e2, type: 3}
+  - {fileID: 21300000, guid: 8d950184a198c08459a716680da42a2e, type: 3}
+  - {fileID: 21300000, guid: 5df59c8491ccbb749b29fd6d3242638d, type: 3}
+  - {fileID: 21300000, guid: 56bb01d4be352994e99bf7086d0b3de9, type: 3}
+  - {fileID: 21300000, guid: 0c184be4cb6ef0140b89fd19363f8d38, type: 3}
+  - {fileID: 21300000, guid: ac1a4835c39fbc4489b14611c64bc0c8, type: 3}
+  - {fileID: 21300000, guid: a5689245fdb07f241a7d91b0cd949bad, type: 3}
+  - {fileID: 21300000, guid: 840246556e9bbc74bb4966a4dcb33dec, type: 3}
+  - {fileID: 21300000, guid: 36b668950271fdf4f9814bce5205591d, type: 3}
+  - {fileID: 21300000, guid: 346dd8e54826bca48a9fd7489a781bfe, type: 3}
+  - {fileID: 21300000, guid: ab92bf167cdc1da42be5f0ab239b06e7, type: 3}
+  - {fileID: 21300000, guid: 6bb9cd17889ad98429b3d49c25286996, type: 3}
+  - {fileID: 21300000, guid: b0685377b1509cf409ef327fa5fccadd, type: 3}
+  - {fileID: 21300000, guid: 75ccdfe7960c1f742a056b53e413a794, type: 3}
+  - {fileID: 21300000, guid: fe29fd291f3677248adb4f296882dff2, type: 3}
+  - {fileID: 21300000, guid: 22867bb9a61392244aa6089a1263162f, type: 3}
+  - {fileID: 21300000, guid: c4ec84c975ab60546b7bc51de83de410, type: 3}
+  - {fileID: 21300000, guid: bf835ad9f8840eb478b2b9b1a1733c00, type: 3}
+  - {fileID: 21300000, guid: 7c21282a571b34e478720ab11014783e, type: 3}
+  - {fileID: 21300000, guid: 73f62e3aefdf79448b8eaa6340f99439, type: 3}
+  - {fileID: 21300000, guid: a5878dda4feb61140b77c0334251d3fb, type: 3}
+  - {fileID: 21300000, guid: 724b411bde9f9904fa89ceb8e0e0dd45, type: 3}
+  - {fileID: 21300000, guid: 8951167bf5479bc4f84efd184959a47d, type: 3}
+  - {fileID: 21300000, guid: 5fd338cb805330844924dccfa7887a31, type: 3}
+  - {fileID: 21300000, guid: 5fb829ebb03f7b74793be349cd7adbce, type: 3}
+  - {fileID: 21300000, guid: 7faf135ce9941e5489c13f63ac939380, type: 3}
+  - {fileID: 21300000, guid: 1b0cf4ed36fe2c74c9ce19e1e57dc529, type: 3}
+  - {fileID: 21300000, guid: abdab0fd95732ad429b5ced3406e94e8, type: 3}
+  - {fileID: 21300000, guid: d6f417fd6495d2c4e8799174dc838c4f, type: 3}
+  - {fileID: 21300000, guid: 70bd7efdcc13bdb4baa24f39a780fef6, type: 3}
+  - {fileID: 21300000, guid: d38d0c1ef9fafad40aa7f70b5fe71eb7, type: 3}
+  - {fileID: 21300000, guid: 84bad96e585a3ff47919c12c772d0ce8, type: 3}
+  - {fileID: 21300000, guid: ac07147eae62679459838be861e721f0, type: 3}
+  - {fileID: 21300000, guid: 4350347e9071ed6469df7a13b93769c7, type: 3}
+  - {fileID: 21300000, guid: c292b67e0048f0b4c8b8d3574c7c3d23, type: 3}
+  - {fileID: 21300000, guid: 1eaa001f451c41d4f925a4da4a974117, type: 3}
+  - {fileID: 21300000, guid: 760bb41f7cdf97841a9be9e4b49ddd76, type: 3}
+  - {fileID: 21300000, guid: 7e66153f2c25d4d4b826beb6ea1f214e, type: 3}
+  - {fileID: 21300000, guid: 5f7b295f2341215489be38529d0ad2f8, type: 3}
+  - {fileID: 21300000, guid: 6de4b3cf91b4e444dba53e3ff358028b, type: 3}
+  - {fileID: 21300000, guid: f6773bdf004c12040bcc8e4282d662e6, type: 3}
+  - {fileID: 21300000, guid: 412278ff6bcd2e145acc037dc045e076, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ship (24)
+  - explosion1
+  - shotThin
+  - oilSpill_small
+  - Health Drop
+  - ship (10)
+  - ship (16)
+  - explosion2
+  - ship (2)
+  - ship (9)
+  - barrelGrey_up
+  - Water Splash
+  - ship (1)
+  - ship (4)
+  - explosion3
+  - explosion3
+  - ship (11)
+  - ship (7)
+  - FireSheet
+  - explosion5
+  - ship (23)
+  - ship (21)
+  - Clock
+  - ship (19)
+  - Spawn Indicator
+  - ship (20)
+  - ship (22)
+  - Full Circle
+  - fire1
+  - cannonBall
+  - oilSpill_large
+  - ship (18)
+  - HealthWheel
+  - ship (8)
+  - explosion2
+  - Solid Water
+  - ship (12)
+  - ship (6)
+  - ship (17)
+  - ship (13)
+  - Water Bubble
+  - cannonMobile
+  - ship (14)
+  - barrelRed_up
+  - Skull
+  - ship (5)
+  - fire2
+  - Transparent Water
+  - ship (15)
+  - Health Drop Outline
+  - ship (3)
+  - barrelGreen_up
+  - explosion4
+  - cannon
+  m_RenderDataMap: {}
+  m_Tag: Atlas
+  m_IsVariant: 0

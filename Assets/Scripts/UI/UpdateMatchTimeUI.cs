@@ -19,7 +19,7 @@ public class UpdateMatchTimeUI : MonoBehaviour {
 
     void Start() {
         currentGameMode = PlayerPrefs.GetInt(PlayerSettings.GameMode, PlayerSettings.defaultGameMode);
-        if (currentGameMode == (int) MatchManager.GameMode.Infinite) {
+        if (currentGameMode == PlayerSettings.GameModes.Infinite) {
             matchTime = 0f;
         } else {
             matchTime = PlayerPrefs.GetFloat(PlayerSettings.MatchTime, PlayerSettings.defaultMatchTime);
@@ -27,10 +27,10 @@ public class UpdateMatchTimeUI : MonoBehaviour {
     }
 
     void Update() {
-        if (currentGameMode == (int) MatchManager.GameMode.Infinite) {
+        if (currentGameMode == PlayerSettings.GameModes.Infinite) {
             matchTime += Time.deltaTime;
         } else {
-            if (matchTime > 0) {
+            if (matchTime > 0f) {
                 matchTime -= Time.deltaTime;
             } else {
                 matchTime = 0f;
@@ -47,7 +47,7 @@ public class UpdateMatchTimeUI : MonoBehaviour {
         return TimeRemainingText.text;
     }
 
-    public void OnGameEndedEvent(int currentGameMode, bool playerWon, int enemiesDestroyed) {
+    public void OnGameEndedEvent(bool playerWon, int enemiesDestroyed) {
         enabled = false;
     }
 }

@@ -43,7 +43,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Water
+  - name: Sea
     uniqueID: 969124991
     locked: 0
   - name: Distortion
@@ -57,6 +57,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 4147999255
+    locked: 0
+  - name: Overlay
+    uniqueID: 3155689309
     locked: 0
   - name: BigEffects
     uniqueID: 2946144161
