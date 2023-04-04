@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2869764573733693666
 Transform:
@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background Waves Constant
       objectReference: {fileID: 0}
+    - target: {fileID: 3339342496364067327, guid: 9974f97826049b9459112d96d90c5d68, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9974f97826049b9459112d96d90c5d68, type: 3}
 --- !u!4 &2869764573637038792 stripped
@@ -149,6 +153,26 @@ PrefabInstance:
     - target: {fileID: 1039442032182640623, guid: beeb4a79e9aef3a43a8ecde675eb5096, type: 3}
       propertyPath: m_Name
       value: Background Waves Random
+      objectReference: {fileID: 0}
+    - target: {fileID: 1039442032182640623, guid: beeb4a79e9aef3a43a8ecde675eb5096, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327038326579854957, guid: beeb4a79e9aef3a43a8ecde675eb5096, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374499815869064567, guid: beeb4a79e9aef3a43a8ecde675eb5096, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108417241818216314, guid: beeb4a79e9aef3a43a8ecde675eb5096, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996053854940912922, guid: beeb4a79e9aef3a43a8ecde675eb5096, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beeb4a79e9aef3a43a8ecde675eb5096, type: 3}

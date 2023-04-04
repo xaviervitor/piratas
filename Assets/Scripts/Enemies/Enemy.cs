@@ -8,10 +8,15 @@ public abstract class Enemy : Ship {
     public delegate void EnemyDestroyedDelegate();
     public static event EnemyDestroyedDelegate EnemyDestroyedEvent;
 
+    protected float smoothingAccelStep = 1f / 16f;
+    protected float smoothingDecelStep = 1f / 256f;
+
     private EnemyStateMachine stateMachine;
+    private float beforeSpeed; 
 
     protected new void Start() {
         base.Start();
+        beforeSpeed = 0f;
         stateMachine = GetComponent<EnemyStateMachine>();        
     }
 
@@ -57,7 +62,17 @@ public abstract class Enemy : Ship {
         float factor = Mathf.InverseLerp(0f, correctionAngleLimit, Mathf.Abs(angleAdjusmentAmount)); 
         currentAngularVelocity = AngularVelocity * factor * turnDirection;
         
-        currentVelocity = -transform.up * speed;
+        if (beforeSpeed > speed) {
+            float apply = beforeSpeed - smoothingDecelStep;
+            currentVelocity = -transform.up * apply;
+            beforeSpeed = apply;
+        } else if (beforeSpeed < speed) {
+            float apply = beforeSpeed + smoothingAccelStep;
+            currentVelocity = -transform.up * apply;
+            beforeSpeed = apply;
+        } else {
+            currentVelocity = -transform.up * speed;
+        }
     }
 
     public void OnPlayerDestroyedEvent() {

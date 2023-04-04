@@ -89,7 +89,7 @@ public class MatchManager : MonoBehaviour {
 
     void OnEnemyDestroyedEvent() {
         enemiesDestroyed++;
-        if (enemiesDestroyed % 10 == 0) {
+        if (enemiesDestroyed % 15 == 0) {
             enemySpawner.SpawnEnemyGhost();
         }
     }

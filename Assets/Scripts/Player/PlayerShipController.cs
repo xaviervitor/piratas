@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerShipController : Ship {
-
     [SerializeField] private GameObject CannonballPrefab;
     [SerializeField] private GameObject CannonballFrontalSpawn;
+    [SerializeField] private GameObject CurseOverlay;
     [SerializeField] private List<GameObject> CannonballLateralSpawners;
     [SerializeField] private GameObject ShotPrefab;
     
@@ -70,12 +70,17 @@ public class PlayerShipController : Ship {
 
     public void Curse() {
         Speed = 3f;
-        AngularVelocity = -45f;
-        currentAngularVelocity = -currentAngularVelocity;
+        currentSpeed = (currentSpeed == 0f) ? 0f : 3f;
+        AngularVelocity = 45f;
+        currentAngularVelocity = currentAngularVelocity / 2;
+        CurseOverlay.SetActive(true);
     }
 
     public void Uncurse() {
         Speed = 4f;
+        currentSpeed = (currentSpeed == 0f) ? 0f : 4f;
         AngularVelocity = 90f;
+        currentAngularVelocity = currentAngularVelocity * 2;
+        CurseOverlay.SetActive(false);
     }
 }

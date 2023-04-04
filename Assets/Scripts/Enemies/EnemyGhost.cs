@@ -11,9 +11,12 @@ public class EnemyGhost : Enemy {
     private Ship playerShip;
     private float damageTimer = 0f;
 
+
     protected new void Start() {
         base.Start();
         damageTimer = damageRate;
+        smoothingAccelStep = 1f / 16f;
+        smoothingDecelStep = 1f / 64f;
         playerShip = Player.GetComponent<Ship>();
     }
 

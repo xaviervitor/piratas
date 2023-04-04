@@ -5138,9 +5138,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8635598189221677090, guid: d098bb95598d0c84aad6544c1ea43d34, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8635598190276767048, guid: d098bb95598d0c84aad6544c1ea43d34, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8635598190276767048, guid: d098bb95598d0c84aad6544c1ea43d34, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6300,7 +6304,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1783402898
 MonoBehaviour:
