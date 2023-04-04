@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 7820511155644840369}
   - component: {fileID: 3240287396881333492}
   m_Layer: 5
-  m_Name: HealthWheel
+  m_Name: Health Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

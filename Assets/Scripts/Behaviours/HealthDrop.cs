@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecoverPlayerHealthOnTrigger : MonoBehaviour {
+public class HealthDrop : MonoBehaviour {
     [SerializeField] private GameObject Parent;
     [SerializeField] private GameObject Circle;
     [SerializeField] private GameObject FullCircle;
