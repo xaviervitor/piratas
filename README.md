@@ -1,6 +1,6 @@
-# Piratas
+# <img src="Assets/icon.png" height="35" alt="Piratas logo">Piratas<img src="Assets/icon.png" height="35" alt="Piratas logo">
 
-This is Pirates, a top-down pirate themed arcade shooter. Have fun destroying the pirates and watch out for the ghost ship!
+This is Piratas, a top-down pirate themed arcade shooter. Have fun destroying the pirates and watch out for the ghost ship!
 
 You can play it <a href="https://vitassos.itch.io/piratas">here</a>. Thanks for playing!
 
