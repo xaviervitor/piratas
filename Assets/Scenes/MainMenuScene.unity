@@ -1472,7 +1472,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 468233966}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.14894737
+  m_Size: 0.15916759
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1548,7 +1548,7 @@ RectTransform:
   m_Father: {fileID: 201207143}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.85105264}
+  m_AnchorMin: {x: 0, y: 0.8408324}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -1998,7 +1998,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.99999994, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3982,7 +3982,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1900}
+  m_SizeDelta: {x: 0, y: 1778}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1004993424
 GameObject:
@@ -4068,7 +4068,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 524820761}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5751,12 +5751,6 @@ MonoBehaviour:
     Tanks Redux" textures, by Kenney (CC0).
 
     Source: <https://www.kenney.nl/assets/top-down-tanks-redux>.
-
-
-    "Cartography
-    Pack" textures, by Kenney (CC0).
-
-    Source: <https://www.kenney.nl/assets/cartography-pack>.
 
 
     "Time"

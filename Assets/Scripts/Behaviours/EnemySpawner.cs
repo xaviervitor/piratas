@@ -81,7 +81,10 @@ public class EnemySpawner : MonoBehaviour {
 
     bool isValidSpawnPosition(Vector2 randomPosition, Vector2 playerPosition) {
         if (Vector2.Distance(randomPosition, playerPosition) < 6f) return false;
-        RaycastHit2D result = Physics2D.CircleCast(new Vector2(randomPosition.x - 2.35f, randomPosition.y), 3, Vector2.zero, 0, OutOfBoundsLayer);
+        // Checks if a radius of the spawn position collides with 
+        // any obstacle, with an offset to account for its idle circular
+        // trajectory.
+        RaycastHit2D result = Physics2D.CircleCast(new Vector2(randomPosition.x - 2.35f, randomPosition.y), 3f, Vector2.zero, 0f, OutOfBoundsLayer);
         if (result.collider is TilemapCollider2D) return false;
         
         return true;

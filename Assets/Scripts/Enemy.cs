@@ -49,19 +49,23 @@ public abstract class Enemy : Ship {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         
-        float angleAdjusmentAmount = transform.rotation.eulerAngles.z - rotation.eulerAngles.z;
-        if (angleAdjusmentAmount >= 180f) {
-            angleAdjusmentAmount -= 360f;
+        float angleDifference = transform.rotation.eulerAngles.z - rotation.eulerAngles.z;
+        // Adjusts angle difference from [-360,360] to [-180,180]
+        if (angleDifference >= 180f) {
+            angleDifference -= 360f;
         }
-        if (angleAdjusmentAmount <= -180f) {
-            angleAdjusmentAmount += 360f;
+        if (angleDifference <= -180f) {
+            angleDifference += 360f;
         }
-        float turnDirection = (angleAdjusmentAmount > 0f) ? -1 : 1;
+        float turnDirection = (angleDifference > 0f) ? -1 : 1;
 
+        // Reduces the max AngularVelocity by a smooth decreasing ´factor´
+        // when the angle is next to zero
         float correctionAngleLimit = 5f;
-        float factor = Mathf.InverseLerp(0f, correctionAngleLimit, Mathf.Abs(angleAdjusmentAmount)); 
+        float factor = Mathf.InverseLerp(0f, correctionAngleLimit, Mathf.Abs(angleDifference)); 
         currentAngularVelocity = AngularVelocity * factor * turnDirection;
         
+        // Smoothly accelerates and decelerates sudden changes of speed
         if (beforeSpeed > speed) {
             float apply = beforeSpeed - smoothingDecelStep;
             currentVelocity = -transform.up * apply;

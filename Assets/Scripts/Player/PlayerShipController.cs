@@ -46,6 +46,7 @@ public class PlayerShipController : Ship {
             cannonball = SpawnCannonball(CannonballPrefab, ShotPrefab, cannonballSpawner.transform, objInstanceID);
             cannonball.playSounds = false;
         }
+        // Plays cannonball sounds only once to prevent multiplied audio volume
         if (cannonball != null) {
             cannonball.playSounds = true;
         }

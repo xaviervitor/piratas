@@ -10,9 +10,6 @@ Source: <https://www.kenney.nl/assets/top-down-tanks>.
 "Top-down Tanks Redux" textures, by Kenney (CC0).
 Source: <https://www.kenney.nl/assets/top-down-tanks-redux>.
 
-"Cartography Pack" textures, by Kenney (CC0).
-Source: <https://www.kenney.nl/assets/cartography-pack>.
-
 "Time" icon, by Mike Zuidgeest (CC3).
 Source: <https://thenounproject.com/icon/time-5562404/>
 Notes: Modified the fill color from black to white.

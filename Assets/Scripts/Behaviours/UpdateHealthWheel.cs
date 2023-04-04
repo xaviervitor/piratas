@@ -22,7 +22,7 @@ public class UpdateHealthWheel : MonoBehaviour {
     }
 
     void UpdateHealthWheelUI(float health, float maxHealth) {
-        if (health == 0f) {
+        if (health <= 0f) {
             Destroy(gameObject);
         }
         slider.value = health / maxHealth;

@@ -18,7 +18,7 @@ public class HealthDrop : MonoBehaviour {
         if (healthRecoverPercentage > 0f) {
             FullCircle.transform.localScale = new Vector3(healthRecoverPercentage, healthRecoverPercentage, 1);        
         } else {
-            if (DepletedCoroutineStarted == true) {
+            if (DepletedCoroutineStarted) {
                 ParticleSystem particleSystemComponent = ParticleSystem.GetComponent<ParticleSystem>();
                 particleSystemComponent.Stop();
                 StartCoroutine(OnHealthAvailableDepleted());
@@ -40,12 +40,12 @@ public class HealthDrop : MonoBehaviour {
         Transform circleTransform = Circle.transform;
         SpriteRenderer spriteRenderer = Circle.GetComponent<SpriteRenderer>();
         Color color;
-        float step;
+        float shrinkStep;
         while (circleTransform.localScale.x > 0f) {
-            step = shrinkSpeed * Time.deltaTime;
-            circleTransform.localScale = new Vector3(circleTransform.localScale.x - step, circleTransform.localScale.y - step, 1f);    
+            shrinkStep = shrinkSpeed * Time.deltaTime;
+            circleTransform.localScale = new Vector3(circleTransform.localScale.x - shrinkStep, circleTransform.localScale.y - shrinkStep, 1f);    
             color = spriteRenderer.color;
-            color.a = color.a - step;
+            color.a = color.a - shrinkStep;
             spriteRenderer.color = color;
             yield return null;
         }

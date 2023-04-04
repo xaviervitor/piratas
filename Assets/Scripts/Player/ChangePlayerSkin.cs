@@ -9,12 +9,12 @@ public class ChangePlayerSkin : MonoBehaviour {
 
     private Ship ship;
     private SpriteRenderer playerSpriteRenderer;
-    private Image sliderFill;
+    private Image playerHealthWheelSliderFill;
 
     void Start() {
         ship = GetComponent<Ship>();
         playerSpriteRenderer = ship.GetComponent<SpriteRenderer>();
-        sliderFill = HealthWheelSliderFill.GetComponent<Image>();
+        playerHealthWheelSliderFill = HealthWheelSliderFill.GetComponent<Image>();
 
         SetSkin(PlayerPrefs.GetInt(PlayerSettings.PlayerSkin));
     }
@@ -22,7 +22,7 @@ public class ChangePlayerSkin : MonoBehaviour {
     void SetSkin(int selectedPlayerSkin) {
         ShipSkin playerSkin = PlayerSkins[selectedPlayerSkin];
         ship.ActiveShipSkin = playerSkin;
-        sliderFill.color = playerSkin.healthWheelColor;
+        playerHealthWheelSliderFill.color = playerSkin.healthWheelColor;
         playerSpriteRenderer.sprite = playerSkin.sprites[playerSkin.sprites.Count - 1];
     }
 }

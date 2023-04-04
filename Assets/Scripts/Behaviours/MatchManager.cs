@@ -13,6 +13,7 @@ public class MatchManager : MonoBehaviour {
     
     private EnemySpawner enemySpawner;
     private int enemiesDestroyed = 0;
+    private int ghostSpawnInterval = 15;
     private float MatchTime;
     private int CurrentGameMode;
     private bool matchEnded = false;
@@ -89,7 +90,7 @@ public class MatchManager : MonoBehaviour {
 
     void OnEnemyDestroyedEvent() {
         enemiesDestroyed++;
-        if (enemiesDestroyed % 15 == 0) {
+        if (enemiesDestroyed % ghostSpawnInterval == 0) {
             enemySpawner.SpawnEnemyGhost();
         }
     }

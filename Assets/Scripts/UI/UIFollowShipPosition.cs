@@ -23,10 +23,7 @@ public class UIFollowShipPosition : MonoBehaviour {
         offset = rectTransform.anchoredPosition;
     }
 
-    // void Update() {
-    //     rectTransform.anchoredPosition = Ship.transform.localPosition + offset;
-    // }
-
+    // UI movement should be handled at the same time as the camera movement
     void LateUpdate() {
         rectTransform.anchoredPosition = Ship.transform.localPosition + offset;
     }
